@@ -19,10 +19,10 @@ struct MonthView: View {
 
 
     var body: some View {
-        LazyHStack(spacing: config.daysSpacing.vertical) {
+        LazyVStack(spacing: config.daysSpacing.vertical) {
             ForEach(data.items, id: \.last, content: createSingleRow)
         }
-        
+        .frame(width:UIScreen.main.bounds.width)
         .frame(maxHeight: .infinity)
         .animation(animation, value: selectedDate)
         .animation(animation, value: selectedRange?.getRange())
@@ -42,7 +42,7 @@ private extension MonthView {
 private extension MonthView {
     func createDayView(_ date: Date) -> some View {
         config.dayView(date, isCurrentMonth(date), $selectedDate, $selectedRange).erased()
-        .frame(width:20)
+        
     }
 }
 private extension MonthView {
