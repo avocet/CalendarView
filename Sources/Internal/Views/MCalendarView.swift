@@ -34,14 +34,15 @@ private extension MCalendarView {
         configData.weekdaysView().erased()
     }
     func createScrollView() -> some View { ScrollViewReader { reader in
-        ScrollView(showsIndicators: false) {
-            LazyVStack(spacing: configData.monthsSpacing) {
+        ScrollView(.horizontal,showsIndicators: false) {
+            LazyＨStack(spacing: configData.monthsSpacing) {
                 ForEach(monthsData, id: \.month, content: createMonthItem)
             }
             .padding(.top, configData.monthsPadding.top)
             .padding(.bottom, configData.monthsPadding.bottom)
             .background(configData.monthsViewBackground)
         }
+        
         .onAppear() { scrollToDate(reader, animatable: false) }
         .onChange(of: configData.scrollDate) { _ in scrollToDate(reader, animatable: true) }
     }}
