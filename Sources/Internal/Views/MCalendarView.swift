@@ -38,7 +38,7 @@ private extension MCalendarView {
             LazyHStack(spacing: configData.monthsSpacing) {
                 ForEach(monthsData, id: \.month, content: createMonthItem)
             }
-            .frame(height:UIScreen.main.bounds.width)
+            
             .padding(.top, configData.monthsPadding.top)
             .padding(.bottom, configData.monthsPadding.bottom)
             .background(configData.monthsViewBackground)
