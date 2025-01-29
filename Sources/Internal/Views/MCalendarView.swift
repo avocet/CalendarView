@@ -45,7 +45,7 @@ private extension MCalendarView {
         }
         
         .onAppear() { scrollToDate(reader, animatable: false) }
-        .onChange(of: configData.scrollDate) { _ in scrollToDate(reader, animatable: true) }
+        .onChange(of: configData.monthLabel) { _ in scrollToDate(reader, animatable: true) } //.scrollDate
     }}
 }
 private extension MCalendarView {
