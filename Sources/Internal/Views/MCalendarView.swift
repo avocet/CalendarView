@@ -38,13 +38,7 @@ private extension MCalendarView {
             LazyHStack(spacing: configData.monthsSpacing) {
                 ForEach(monthsData, id: \.month, content: createMonthItem)
             }
-            .gesture(
-                DragGesture()
-                    .onEnded { _ in
-                              print("dragging")
-                        autoAlignToNearestMonth(reader)
-                    }
-            )
+            
             .padding(.top, configData.monthsPadding.top)
             .padding(.bottom, configData.monthsPadding.bottom)
             .background(configData.monthsViewBackground)
