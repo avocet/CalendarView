@@ -19,7 +19,7 @@ struct MonthView: View {
 
 
     var body: some View {
-        LazyVStack(spacing: config.daysSpacing.vertical) {
+        LazyHStack(spacing: config.daysSpacing.vertical) {
             ForEach(data.items, id: \.last, content: createSingleRow)
         }
         .frame(maxHeight: .infinity)
