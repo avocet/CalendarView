@@ -42,6 +42,7 @@ private extension MonthView {
 private extension MonthView {
     func createDayView(_ date: Date) -> some View {
         config.dayView(date, isCurrentMonth(date), $selectedDate, $selectedRange).erased()
+        .frame(width:20)
     }
 }
 private extension MonthView {
