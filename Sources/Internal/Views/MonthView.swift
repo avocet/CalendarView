@@ -23,7 +23,7 @@ struct MonthView: View {
             ForEach(data.items, id: \.last, content: createSingleRow)
         }
         .frame(width:UIScreen.main.bounds.width - 40)
-        .frame(height: 260)
+        .frame(height: 350)
         .animation(animation, value: selectedDate)
         .animation(animation, value: selectedRange?.getRange())
     }
