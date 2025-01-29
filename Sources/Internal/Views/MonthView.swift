@@ -31,7 +31,8 @@ private extension MonthView {
     func createSingleRow(_ dates: [Date]) -> some View {
         HStack(spacing: config.daysSpacing.horizontal) {
             ForEach(dates, id: \.self, content: createDayView)
-        }
+        } 
+        .frame(width:UIScreen.main.bounds.width)
     }
 }
 private extension MonthView {
