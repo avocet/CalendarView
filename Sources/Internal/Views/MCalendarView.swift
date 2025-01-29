@@ -49,6 +49,7 @@ private extension MCalendarView {
         .gesture(
                 DragGesture()
                     .onEnded { _ in
+                              print("dragging")
                         autoAlignToNearestMonth(reader)
                     }
             )
