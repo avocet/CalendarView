@@ -38,7 +38,13 @@ private extension MCalendarView {
             LazyHStack(spacing: configData.monthsSpacing) {
                 ForEach(monthsData, id: \.month, content: createMonthItem)
             }
-            
+            .gesture(
+                DragGesture()
+                    .onEnded { _ in
+                              print("dragging")
+                        autoAlignToNearestMonth(reader)
+                    }
+            )
             .padding(.top, configData.monthsPadding.top)
             .padding(.bottom, configData.monthsPadding.bottom)
             .background(configData.monthsViewBackground)
@@ -46,13 +52,7 @@ private extension MCalendarView {
         
         .onAppear() { scrollToDate(reader, animatable: false) }
         .onChange(of: configData.scrollDate) { _ in scrollToDate(reader, animatable: true) } 
-        .gesture(
-                DragGesture()
-                    .onEnded { _ in
-                              print("dragging")
-                        autoAlignToNearestMonth(reader)
-                    }
-            )
+        
     }}
 }
 private extension MCalendarView {
