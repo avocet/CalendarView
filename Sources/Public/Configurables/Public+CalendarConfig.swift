@@ -82,7 +82,7 @@ public extension CalendarConfig {
 // MARK: - Internal
 public struct CalendarConfig: Configurable { public init() {}
     private(set) var monthLabelDaysSpacing: CGFloat = 12
-    private(set) var monthsPadding: (top: CGFloat, bottom: CGFloat) = (12, 24)
+    private(set) var monthsPadding: (top: CGFloat, bottom: CGFloat) = (24, 24)
     private(set) var monthsSpacing: CGFloat = 24
     private(set) var daysSpacing: (vertical: CGFloat, horizontal: CGFloat) = (2, 0)
 
