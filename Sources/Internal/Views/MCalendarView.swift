@@ -57,7 +57,7 @@ private extension MCalendarView {
 private extension MCalendarView {
     func autoAlignToNearestMonth(_ reader: ScrollViewProxy) {
         guard let closestMonth = findNearestMonth() else { return }
-        configData.scrollDate = closestMonth
+        //configData.scrollDate = closestMonth
         scrollToDate(reader, animatable: true)
     }
 }
