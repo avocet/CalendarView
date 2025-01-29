@@ -38,6 +38,7 @@ private extension MCalendarView {
             LazyHStack(spacing: configData.monthsSpacing) {
                 ForEach(monthsData, id: \.month, content: createMonthItem)
             }
+            .frame(height:UIScreen.main.bounds.width)
             .padding(.top, configData.monthsPadding.top)
             .padding(.bottom, configData.monthsPadding.bottom)
             .background(configData.monthsViewBackground)
@@ -52,7 +53,7 @@ private extension MCalendarView {
         VStack(spacing: configData.monthLabelDaysSpacing) {
             createMonthLabel(data.month)
             createMonthView(data)
-        }.frame(height:UIScreen.main.bounds.width)
+        }
     }
 }
 private extension MCalendarView {
