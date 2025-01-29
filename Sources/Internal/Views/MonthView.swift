@@ -22,6 +22,7 @@ struct MonthView: View {
         LazyHStack(spacing: config.daysSpacing.vertical) {
             ForEach(data.items, id: \.last, content: createSingleRow)
         }
+        .frame(height:UIScreen.main.bounds.width)
         .frame(maxHeight: .infinity)
         .animation(animation, value: selectedDate)
         .animation(animation, value: selectedRange?.getRange())
@@ -29,38 +30,14 @@ struct MonthView: View {
 }
 private extension MonthView {
     func createSingleRow(_ dates: [Date]) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-           let rows = generateRows(dates: dates)
-           ForEach(rows, id: \.self) { row in
+        
                   HStack(spacing: config.daysSpacing.horizontal) {
                        ForEach(dates, id: \.self, content: createDayView)
                    } 
-           }
-        }
+          
     }
 
-    // 手動計算行數，確保不超過螢幕寬度
-    func generateRows(dates: [Date]) -> [[Date]] {
-        var rows: [[Date]] = []
-        var currentRow: [Date] = []
-        var currentWidth: CGFloat = 0
-        let maxWidth: CGFloat = UIScreen.main.bounds.width - 40 // 預留 padding
-        let itemWidth: CGFloat = 80 + 10 // 每個 item + spacing
-        
-        for date in dates {
-            if currentWidth + itemWidth > maxWidth {
-                rows.append(currentRow)
-                currentRow = []
-                currentWidth = 0
-            }
-            currentRow.append(date)
-            currentWidth += itemWidth
-        }
-        if !currentRow.isEmpty {
-            rows.append(currentRow)
-        }
-        return rows
-    }
+    
 }
 private extension MonthView {
     func createDayView(_ date: Date) -> some View {
