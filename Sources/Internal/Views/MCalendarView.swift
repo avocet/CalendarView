@@ -45,33 +45,14 @@ private extension MCalendarView {
         }
         
         .onAppear() { scrollToDate(reader, animatable: false) }
-        .onChange(of: configData.scrollDate) { _ in scrollToDate(reader, animatable: true) } 
+        .onChange(of: configData.scrollDate) { _ in 
+                                         print("dragging")     
+                                              scrollToDate(reader, animatable: true) } 
         
     }}
 }
-private extension MCalendarView {
-    func autoAlignToNearestMonth(_ reader: ScrollViewProxy) {
-        //guard let closestMonth = findNearestMonth() else { return }
-        //configData.scrollDate = closestMonth
-        scrollToDate(reader, animatable: true)
-    }
-}
-private extension MCalendarView {
-    func findNearestMonth() -> Date? {
-        guard let currentScrollDate = configData.scrollDate else { return nil }
-        
-        let calendar = Calendar.current
-        let currentMonth = calendar.component(.month, from: currentScrollDate)
-        
-        // 找到距離 `scrollDate` 最近的 `monthsData`
-        let nearestMonth = monthsData.min(by: { 
-            abs(calendar.component(.month, from: $0.month) - currentMonth) < 
-            abs(calendar.component(.month, from: $1.month) - currentMonth)
-        })
-        
-        return nearestMonth?.month
-    }
-}
+
+
 
 private extension MCalendarView {
     func createMonthItem(_ data: Data.MonthView) -> some View {
