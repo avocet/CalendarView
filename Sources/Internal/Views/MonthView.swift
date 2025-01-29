@@ -22,7 +22,7 @@ struct MonthView: View {
         LazyVStack(spacing: config.daysSpacing.vertical) {
             ForEach(data.items, id: \.last, content: createSingleRow)
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxHeight: .infinity)
         .animation(animation, value: selectedDate)
         .animation(animation, value: selectedRange?.getRange())
     }
